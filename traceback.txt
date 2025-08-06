@@ -1,0 +1,26 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+  File "game/task_one.rpy", line 126, in script
+    $ Threaten += 1
+  File "game/task_one.rpy", line 126, in <module>
+    $ Threaten += 1
+NameError: name 'Threaten' is not defined
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "game/task_one.rpy", line 126, in script
+    $ Threaten += 1
+  File "C:\Users\Nicholas\Downloads\renpy-8.2.3-sdk.7z(1)\renpy-8.2.3-sdk\renpy\ast.py", line 823, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "C:\Users\Nicholas\Downloads\renpy-8.2.3-sdk.7z(1)\renpy-8.2.3-sdk\renpy\python.py", line 1178, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "game/task_one.rpy", line 126, in <module>
+    $ Threaten += 1
+NameError: name 'Threaten' is not defined
+
+Windows-10-10.0.19045 AMD64
+Ren'Py 8.2.3.24061702
+I Made A Deal With The Devil and Now My Robovac Is Sentient 1.0
+Wed Aug  6 01:01:54 2025
