@@ -5,10 +5,10 @@ label task_one:
     
 
     #Visual - [Dusty apartment bg] image fades in
-    #Visual - RobovacSprite_Neutral_1_Budder.png
+    show robovac neutral
 
     "The tiny robot sits in the center of the room, spinning in circles as if thinking very hard about life with its newfound consciousness. For now, it isn't paying you much mind."
-    #Visual - Robovac image goes away
+    hide robovac with dissolve
 
     "The floor is covered in crumbs and dust. You could clean it yourself… but isn't that why you got a robovac in the first place?"
 
@@ -16,7 +16,7 @@ label task_one:
 
     "You take a step forward and lean down to pick up the robot..."
 
-    #Visual - RobovacSprite_Happy_1_Budder.png
+    show robovac happy with moveinleft
 
     "...But it spins around sharply, tires squealing as it flees"
 
@@ -25,13 +25,13 @@ label task_one:
     pov "Right, you're alive now."
     pov "Not just a simple machine anymore. {i}I hope you don't bite.{/i}"
     
-    #Visual - RobovacSprite_Mischeif_1_Budder.png
+    show robovac mischief
 
     "The machine stops at the other side of the room and turns around. It's staring at you again…waiting…menacing..."
 
     pov "You're not just going to do as I ask, are you?"
 
-    #Visual - RobovacSprite_Stare_1_Budder.png
+    show robovac stare
 
     robovac "..."
 
@@ -60,7 +60,7 @@ label task_one_bond:
 
     pov "Here, little guy, come and get it!"
 
-    #Visual - RobovacSprite_Excited_1_Budder.png
+    show robovac excited
 
     "The robovac perks up and its motor begins to whir loudly. It spins in circles around your feet as you dangle a triple-A battery just above it, gently bumping into your heel as it waits."
     "You set the battery down in front of the robovac. And...it..."
@@ -77,12 +77,11 @@ label task_one_bond:
 
     pov "Ha, I'm a genius!"
 
-    robovac "{i}Beeps enthusiastically{/i}"
+    robovac battery "{i}Beeps enthusiastically{/i}"
 
     pov "And you're not too bad yourself. Good work little guy~"
 
-    #Visual - RobovacSprite_Battery_1_Budder.png
-    #Visual - RobovacSprite_Happy_1_Budder.png
+    show robovac happy
 
 
 
@@ -97,20 +96,20 @@ label task_one_threaten:
     "Returning to the living room, you eye the robovac warily. It has a mind of its own; it isn't a quiet, obedient tool anymore."
     "Now it's a demonic entity that reeks of brimstone and the supernatural"
 
-    #Visual - RobovacSprite_Mischief_1_Budder.png
 
-    robovac "..."
+
+    robovac mischief "..."
 
     "Maybe intimidation is the only option?"
 
     pov "Alright, little demon...you start cleaning right now or you'll get the spray bottle!"
 
-    #Visual - RobovacSprite_Angry_1_Budder.png
+    show robovac angry
 
     "The robovac stops in place and stares, then begins a slow, menacing spin of 360 degrees as if trying to call your bluff. You wave the spray bottle and fire a warning burst into the air."
 
     #Audio - [Scared/anxious robot beeps, low pitched]
-    #Visual - RobovacSprite_Scared_1_Budder.png
+    show robovac scared
 
     "It relents."
     "With a reluctant mechanical whir, it rolls towards the nearest dust pile, sweeping up slowly, but its LED face display never looks away from you for too long."
@@ -126,13 +125,13 @@ label task_one_threaten:
 label task_one_neglect:
 
 
-    #Visual - RobovacSprite_Mischief_1_Budder.png
+    show robovac mischief
     "You glance at the demonic robovac, its vents puffing a faint sulfur smoke as it spins in place." 
     "Maybe you could lure it with something…batteries? No, that's silly. Maybe you could try giving orders directly. Hmm, that seems cruel though. "
     
     pov "Forget it. I'll just sweep up on my own."
     
-    #Visual - RobovacSprite_Sad_1_Budder.png
+    show robovac sad
     
     "You grab a broom and start sweeping. The robovac just sits there, making slow, mocking figure-eights. Every few seconds it lets out another dramatic, self-pitying beep. It's definitely judging you."
     
@@ -143,7 +142,7 @@ label task_one_neglect:
     "At last, the floor's mostly clean"
     "so much for the robot. Still, it rolls back to its charger and parks itself quietly, and its LED display turns dark, blank, and unreadable."
     "Somehow, it feels like you've missed an opportunity, though for what you can't say."
-    "Narration - Strange. It's just a robot isn't it?"
+    "Strange. It's just a robot isn't it?"
 
 
     $ neglect += 1

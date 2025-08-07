@@ -3,9 +3,9 @@
 
 
 
-define devil = DynamicCharacter("[devil_name]", image = "Devil")
+define devil = DynamicCharacter("[devil_name]", image = "devil")
 
-define robovac = DynamicCharacter("[robovac_name]", image = "Robovac")
+define robovac = DynamicCharacter("[robovac_name]", image = "robovac")
 
 label intro_scene:
 
@@ -35,6 +35,7 @@ label intro_scene:
     "{i}You look down.{/i}"
 
     #visual smol devil
+    show devil normal at left with dissolve
 
     devil "Thank you."
 
@@ -83,8 +84,10 @@ label intro_scene:
 
     devil "Alright, deal!"
 
-    "The tiny demon snaps their fingers and vanishes in a plume of smoke. The air still tingles with static electricity as the temperature suddenly returns to normal."
+    hide devil
 
+    "The tiny demon snaps their fingers and vanishes in a plume of smoke. The air still tingles with static electricity as the temperature suddenly returns to normal."
+    
     pov "What? I didn't agree to anything."
 
     "There is no further sign of the creature. You don't feel any different. You pat your own chest and then the wall as if checking you're still real."
@@ -94,16 +97,14 @@ label intro_scene:
 
     "A cheerful beeping emits from the other side of your apartment, and something comes rolling around the corner…"
 
-    #Visual - RobovacSprite_Neutral_1_Budder.png
+    show robovac neutral at left with dissolve
 
     pov "Oh. {i}Oh no{/i}"
 
     "The machine slows to a stop at your feet. Its LED display lights come on by themselves, and then it blinks twice. It feels like it's...watching you."
 
     pov "...Are you...alive?"
-
-    #Visual - RobovacSprite_Happy_1_Budder.png
-
-    robovac "{i}Beeps cheerfully{/i}"
+    
+    robovac happy "{i}Beeps cheerfully{/i}"
     
     jump task_one
