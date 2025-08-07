@@ -2,45 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/task_one.rpy", line 8: expected statement.
-    robovac neutaral
-                    ^
-
-File "game/task_one.rpy", line 19: expected statement.
-    robovac happy
-                 ^
-
-File "game/task_one.rpy", line 28: expected statement.
-    robovac mischief
-                    ^
-
-File "game/task_one.rpy", line 34: expected statement.
-    robovac stare
-                 ^
-
-File "game/task_one.rpy", line 63: expected statement.
-    robovac excited
-                   ^
-
-File "game/task_one.rpy", line 84: expected statement.
-    robovac happy
-                 ^
-
-File "game/task_one.rpy", line 107: expected statement.
-    robovac angry
-                 ^
-
-File "game/task_one.rpy", line 112: expected statement.
-    robovac scared
-                  ^
-
-File "game/task_one.rpy", line 128: expected statement.
-    robovac mischief
-                    ^
-
-File "game/task_one.rpy", line 134: expected statement.
-    robovac sad
-               ^
+File "game/task_three.rpy", line 15: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
+    Visual - RobovacSprite_Sad_1_Budder.png
+    ^
 
 Ren'Py Version: Ren'Py 8.2.3.24061702
-Wed Aug  6 19:23:37 2025
+Wed Aug  6 21:19:08 2025

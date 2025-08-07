@@ -104,7 +104,7 @@ label intro_scene:
     "The machine slows to a stop at your feet. Its LED display lights come on by themselves, and then it blinks twice. It feels like it's...watching you."
 
     pov "...Are you...alive?"
-    
+
     robovac happy "{i}Beeps cheerfully{/i}"
     
     jump task_one
