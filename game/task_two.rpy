@@ -5,7 +5,7 @@ label task_two:
 
     scene black
 
-    pov "Nooo…. Where is it…?"
+    pov "Nooo... Where is it...?"
 
     window hide dissolve
 
@@ -82,7 +82,7 @@ label task_two_bond:
             pov "En garde!"
 
 
-        "Pretend to give up… Then attack!":
+        "Pretend to give up...Then attack!":
 
             "You freeze and then cross your arms, sighing dramatically. The robovac slows down, unsure..."
             # Audio - [Robovac, Excited robot beeps, high-pitched, like happy but rapid-fire]
@@ -140,8 +140,7 @@ label task_two_threaten:
     menu:
         "Pretend to plug it in, then snatch the phone away.":
 
-            pov "C'mere, lil guy… You want your charger, don't you?"
-            pov "C'mere, lil guy… You want your charger, don't you?"
+            pov "C'mere, lil guy... You want your charger, don't you?"
 
             "You kneel down and slowly slide the cord towards the wall. The robovac inches closer, appearing hopeful..."
             "But at the last second you yank it back, dazing the little thief."

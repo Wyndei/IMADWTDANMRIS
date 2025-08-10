@@ -10,7 +10,7 @@ label task_one:
     "The tiny robot sits in the center of the room, spinning in circles as if thinking very hard about life with its newfound consciousness. For now, it isn't paying you much mind."
     hide robovac with dissolve
 
-    "The floor is covered in crumbs and dust. You could clean it yourself… but isn't that why you got a robovac in the first place?"
+    "The floor is covered in crumbs and dust. You could clean it yourself... but isn't that why you got a robovac in the first place?"
 
     pov "Alright, little guy, time to earn your keep."
 
@@ -27,7 +27,7 @@ label task_one:
     
     show robovac mischief
 
-    "The machine stops at the other side of the room and turns around. It's staring at you again…waiting…menacing..."
+    "The machine stops at the other side of the room and turns around. It's staring at you again...waiting...menacing..."
 
     pov "You're not just going to do as I ask, are you?"
 
@@ -35,7 +35,7 @@ label task_one:
 
     robovac "..."
 
-    pov "I guess I'll have to get clever if I want your help then…"
+    pov "I guess I'll have to get clever if I want your help then..."
 
 
     menu:
@@ -108,7 +108,9 @@ label task_one_threaten:
 
     "The robovac stops in place and stares, then begins a slow, menacing spin of 360 degrees as if trying to call your bluff. You wave the spray bottle and fire a warning burst into the air."
 
+    
     #Audio - [Scared/anxious robot beeps, low pitched]
+    # play sound ""
     show robovac scared
 
     "It relents."
@@ -127,7 +129,7 @@ label task_one_neglect:
 
     show robovac mischief
     "You glance at the demonic robovac, its vents puffing a faint sulfur smoke as it spins in place." 
-    "Maybe you could lure it with something…batteries? No, that's silly. Maybe you could try giving orders directly. Hmm, that seems cruel though. "
+    "Maybe you could lure it with something...batteries? No, that's silly. Maybe you could try giving orders directly. Hmm, that seems cruel though. "
     
     pov "Forget it. I'll just sweep up on my own."
     
@@ -136,7 +138,8 @@ label task_one_neglect:
     "You grab a broom and start sweeping. The robovac just sits there, making slow, mocking figure-eights. Every few seconds it lets out another dramatic, self-pitying beep. It's definitely judging you."
     
     #Audio - [Sulking or disappointed robot beeps, like a sad kazoo]
-    
+    # play sound ""
+
     pov "{i}Ugh... This is humiliating...{/i}"
 
     "At last, the floor's mostly clean"

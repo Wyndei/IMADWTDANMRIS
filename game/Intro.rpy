@@ -35,7 +35,9 @@ label intro_scene:
     "{i}You look down.{/i}"
 
     #visual smol devil
-    show devil normal at left with dissolve
+    # show devil normal at left with dissolve
+
+    scene devil_reveal
 
     devil "Thank you."
 
@@ -72,7 +74,7 @@ label intro_scene:
 
     pov "...Okay."
 
-    #devil happy
+    # show devil happy
 
     "Suddenly, the devil breathes in deeply while raising their little arms. They close their eyes in concentration."
 
@@ -80,11 +82,11 @@ label intro_scene:
 
     pov "...Yes?"
 
-    #devil happy
+    # show devil happy
 
     devil "Alright, deal!"
 
-    hide devil
+    # hide devil
 
     "The tiny demon snaps their fingers and vanishes in a plume of smoke. The air still tingles with static electricity as the temperature suddenly returns to normal."
     
@@ -95,7 +97,7 @@ label intro_scene:
     pov "Did you take my soul"
     pov "You didn't take my soul, right"
 
-    "A cheerful beeping emits from the other side of your apartment, and something comes rolling around the corner…"
+    "A cheerful beeping emits from the other side of your apartment, and something comes rolling around the corner..."
 
     show robovac neutral at left with dissolve
 

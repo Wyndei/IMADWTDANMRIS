@@ -332,7 +332,12 @@ screen navigation():
 
 
 style navigation_button is gui_button
-style navigation_button_text is gui_button_text
+style navigation_button_text:
+    properties gui.button_text_properties("navigation_button")
+    idle_color "#ffffff"     
+    hover_color '#858585'     
+    size 32     
+    outlines [(1, "#37130f", 0, 0)] 
 
 style navigation_button:
     size_group "navigation"
@@ -1151,6 +1156,7 @@ screen confirm(message, yes_action, no_action):
     style_prefix "confirm"
 
     add "gui/overlay/confirm.png"
+    add "gui/confirm.png"
 
     frame:
 

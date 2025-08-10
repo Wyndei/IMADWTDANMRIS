@@ -17,5 +17,4 @@ label init_scene:
             name = "Fard"
     
 
-
     jump intro_scene
