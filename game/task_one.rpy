@@ -3,12 +3,17 @@
 
 label task_one:
     
+    
 
-    #Visual - [Dusty apartment bg] image fades in
-    show robovac neutral
+    play music ["apartment.mp3"] fadeout 0.5 fadein 0.5
+    scene apartment_dirty with dissolve
 
-    "The tiny robot sits in the center of the room, spinning in circles as if thinking very hard about life with its newfound consciousness. For now, it isn't paying you much mind."
-    hide robovac with dissolve
+    window show
+
+    "The tiny robot sits in the center of the room, spinning in circles as if thinking deeply about life with its newfound consciousness."
+    "For now, it isn't paying you much mind."
+    
+    show robovac neutral with dissolve
 
     "The floor is covered in crumbs and dust. You could clean it yourself... but isn't that why you got a robovac in the first place?"
 
@@ -16,16 +21,20 @@ label task_one:
 
     "You take a step forward and lean down to pick up the robot..."
 
-    show robovac happy with moveinleft
+    hide robovac happy with moveouttop
 
     "...But it spins around sharply, tires squealing as it flees"
 
+    show robovac happy with moveinleft
+    hide robovac happy with moveoutright
+
+    play sound "excited_beeps.mp3"
     robovac "{i}Beeps playfully{/i}"
 
     pov "Right, you're alive now."
     pov "Not just a simple machine anymore. {i}I hope you don't bite.{/i}"
     
-    show robovac mischief
+    show robovac mischief with moveinbottom
 
     "The machine stops at the other side of the room and turns around. It's staring at you again...waiting...menacing..."
 
@@ -35,10 +44,9 @@ label task_one:
 
     robovac "..."
 
-    pov "I guess I'll have to get clever if I want your help then..."
-
 
     menu:
+        "I guess I'll have to get clever if I want your help then..."
         "Do you want to...play?":
             jump task_one_bond
 
@@ -51,37 +59,48 @@ label task_one:
 
 label task_one_bond:
 
+    show robovac happy
+
     "The robot tilts slightly to the side and beeps once in anticipation. That's as good an answer as you're going to get."
 
     pov "Great, now...what do vacuum cleaners play with exactly?"
 
-    "There is another beep, starting out high pitched and then lowering suddenly. The robovac doesn't seem to notice it, but you're familiar with the sound of a low-battery warning"
+
+    show robovac low_battery
+    "There is another beep, starting out high pitched and then lowering suddenly." 
+    "The robovac doesn't seem to notice it, but you're familiar with the sound of a low-battery warning"
     "...That's not a bad idea actually. You grab a pack of batteries from a kitchen drawer and tear them open."
 
     pov "Here, little guy, come and get it!"
 
     show robovac excited
 
+
+    show pentasonic_batteries with moveinbottom
+
     "The robovac perks up and its motor begins to whir loudly. It spins in circles around your feet as you dangle a triple-A battery just above it, gently bumping into your heel as it waits."
     "You set the battery down in front of the robovac. And...it..."
 
-    #Audio - [Robovac eating a battery noise]
+    play sound "battery_eat.mp3"
+    hide pentasonic_batteries
 
     "...It ate it."
+
+    play sound "cheerful_beeps.mp3"
+    show robovac battery
     "You hear the tell-tale bleep of its battery indicator and - lo and behold - it's charged up. You can feed the robovac, and you can use that to your advantage."
     "You place batteries around your apartment, strategically luring the robovac to sweep up the most critical areas, and it races to follow you as fast as its little wheels can push it."
 
-    #Audio - [Happy robot beeps, high-pitched]
 
     "The robovac zooms around the room in a blur of enthusiasm, sweeping up everything in sight to claim its prize."
 
     pov "Ha, I'm a genius!"
 
-    robovac battery "{i}Beeps enthusiastically{/i}"
+    play sound "excited_beeps.mp3"
+    robovac happy "{i}Beeps enthusiastically{/i}"
 
     pov "And you're not too bad yourself. Good work little guy~"
 
-    show robovac happy
 
 
 
@@ -92,10 +111,10 @@ label task_one_bond:
 
 label task_one_threaten:
 
+    "You're not going to take orders from a piece of plastic!"
     "You grab a spray bottle from the bathroom and fill it with water. Robots are afraid of water, right?"
     "Returning to the living room, you eye the robovac warily. It has a mind of its own; it isn't a quiet, obedient tool anymore."
     "Now it's a demonic entity that reeks of brimstone and the supernatural"
-
 
 
     robovac mischief "..."
@@ -108,9 +127,7 @@ label task_one_threaten:
 
     "The robovac stops in place and stares, then begins a slow, menacing spin of 360 degrees as if trying to call your bluff. You wave the spray bottle and fire a warning burst into the air."
 
-    
-    #Audio - [Scared/anxious robot beeps, low pitched]
-    # play sound ""
+    play sound "anxious_beeps.mp3"
     show robovac scared
 
     "It relents."
@@ -138,7 +155,7 @@ label task_one_neglect:
     "You grab a broom and start sweeping. The robovac just sits there, making slow, mocking figure-eights. Every few seconds it lets out another dramatic, self-pitying beep. It's definitely judging you."
     
     #Audio - [Sulking or disappointed robot beeps, like a sad kazoo]
-    # play sound ""
+    play sound "sad_kazoo.mp3"
 
     pov "{i}Ugh... This is humiliating...{/i}"
 
@@ -149,9 +166,15 @@ label task_one_neglect:
 
 
     $ neglect += 1
-
     jump task_one_end
 
 
 label task_one_end:
+
+    window hide
+    scene black with dissolve
+    stop music fadeout 0.5
+    
+    pause 2.0
+
     jump task_two

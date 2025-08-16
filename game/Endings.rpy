@@ -3,24 +3,21 @@
 
 label ending:
 
-    "bond: [bond] threaten: [threaten] neglect: [neglect]"
+
+    window show
   
-
-
     "Thud. Thud. Thud."
     "Today is not your day. The workday was long, your boss was an absolute nightmare and somehow traffic was even worse. Now, this."
 
-    # (hide menu)
+    scene bathroom with dissolve
+    play music ["trapped.mp3"] fadeout 0.25 fadein 0.25
 
-    # Visual - [Bathroom BG, focus on the door] fade in
-    # Audio - [doorknob rattling, optional]
+    
 
     pov "C'mon, you stupid door… open. Open!"
 
-    "What do you do?"
-    
-
     menu:
+        "What do you do?"
         "Pull the door.":
             "You dig your heels into the bathmat and yank, trying to rip the door open, but all you manage to do is slip and nearly throw out your back."
             pov "Oww..."
@@ -46,6 +43,7 @@ label ending:
     # Audio - [snapping sound, optional]
 
     "..."
+    scene bathroom_doorknob
 
     # Visual - [Bathroom CG, doorknob in hand, optional]
 
@@ -105,12 +103,14 @@ label ending:
 
             $ neglect += 1
 
+    "bond: [bond] threaten: [threaten] neglect: [neglect]"
 
-
-    # Game logic - (now jump to each ending based on point accumulated in previous endings)
-
-
-
+    if (bond > threaten and bond > neglect):
+        jump bond_ending
+    elif (threaten > bond and threaten > neglect):
+        jump threaten_ending
+    elif (neglect > threaten and neglect > bond):
+        jump neglect_ending
 
 label bond_ending:
     
@@ -135,13 +135,19 @@ label bond_ending:
     # Audio - [magical boom]
     # Visual - RobovacSprite_Excited_1_Budder.png
 
+
+    scene bathroom_open
+
     "The door has been obliterated. Splintered wood seems to sail past you in slow-motion. Centered in the doorway is your robovac, wheels still smoking, and its LED face blazing triumphantly."
     pov "Holy crap. You...saved me?"
+
     # Visual - [Apartment BG] fade in
+
+    scene apartment_2b with dissolve
 
     "The apartment is a mess, but you're free. Your heart pounds in your chest as you stare at the proud little robovac in disbelief."
 
-    # Visual - RobovacSprite_Happy_1_Budder.png
+    show robovac happy with dissolve
 
     "The robovac rolls closer to you, gently nudging your leg."
 
@@ -181,7 +187,16 @@ label bond_ending:
     # [player choice menu converges]
 
 
-    "The robovac... No, [robovac] emits a single perfect little beep. The most pure and wholesome beep you've ever heard. You practically expect a halo to appear above its head."
+    python:
+        robovac_name = renpy.input("What will you name your robovac?", length = 10) 
+        robovac_name = robovac_name.strip()
+
+        if not name:
+            robovac_name = "Robovac"
+
+
+    "The robovac... No, [robovac_name] emits a single perfect little beep. The most pure and wholesome beep you've ever heard. You practically expect a halo to appear above its head."
+
 
     robovac "Beeep!"
 
@@ -191,14 +206,15 @@ label bond_ending:
 
     pov "Crap. The landlord's gonna kill me."
 
-    # Show text - “Good End”
-    # Show text - You made a life-long friend and bonded with your robovac, [robovac name].
-    # Show text - [robovac name] would go on to destroy six more doors, each one completely justified.
 
+    scene black with dissolve
 
-
-
-
+    centered "Good End"
+    centered "You made a life-long friend and bonded with your robovac, [robovac_name]"
+    centered "[robovac_name] would go on to destroy six more doors, each one completely justified."
+    centered "Ending 1/3 Good End"
+    return
+    
 label threaten_ending:
 
     "Time passes. Slowly. Painfully."
@@ -253,7 +269,7 @@ label threaten_ending:
     "The door doesn't creak or splinter."
     "It is obliterated in an instant."
 
-    # Visual - Robovac[Knives_version_excited]
+    show robovac_knife
 
     "The robovac is back, but not alone. Its LED display burns bright crimson. Duct-taped to its sides are kitchen knives that glint menacingly in the flickering lights."
     "There's a horde of appliances before you, all similarly roughed up and modified: A small, disc-shaped vacuum, a blender on wheels, a toaster armed with forks..."
@@ -273,12 +289,10 @@ label threaten_ending:
 
     scene black with dissolve
 
-    # show text “Bad End”
-    # show text “If only you'd been a little nicer, maybe you wouldn't have doomed all of humanity…”
-
-
-
-
+    
+    centered "If only you'd been a little nicer, maybe you wouldn't have doomed all of humanity..." 
+    centered "Ending 2/3 Bad End"
+    return
 
 label neglect_ending:
 
@@ -330,5 +344,11 @@ label neglect_ending:
 
     # (idk if renpy can display emojis💔)
 
+
+    scene black with dissolve
+
+    centered ""
+    centered "Ending 3/3 💔"
+    return
 
 

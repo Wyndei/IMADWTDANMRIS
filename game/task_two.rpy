@@ -3,15 +3,15 @@
 
 label task_two:
 
-    scene black
-
+    
+    window show
     pov "Nooo... Where is it...?"
 
-    window hide dissolve
-
-    # scene bg with dissolve 
-
-    pause 1.0
+    
+    scene apartment_afternoon with dissolve 
+    play music ["apartment.mp3"] fadeout 0.5 fadein 0.5
+    
+    
 
     "You pat your pockets, check the table, under the couch cushions, the kitchen counter, even in the fridge, but your phone is nowhere to be found." 
 
@@ -19,13 +19,14 @@ label task_two:
 
     "And then you hear it: The sound of unholy beep-boops, beeping and booping from the other side of the apartment."       
 
-    #Audio - [Happy robot beeps, high-pitched]
-
+    play sound "excited_beeps.mp3"
+    
     show robovac mischief with dissolve
 
     "Your robovac sits in the doorway, smugly blinking as it holds your phone atop its head. It revs in place, as if beckoning you closer."
 
     #Audio - [Robovac, engine rev sound]
+    # play sound ".mp3"
 
     pov "...Are you serious right now?"
 
@@ -63,11 +64,12 @@ label task_two_bond:
             "You charge ahead of the robovac, hoping to intercept it before it can turn!"
             "However, your timing is off and you overshoot. You stumble over your own coffee table and land face first into the couch cushions."
 
-    #[player choice converges]
+
 
     "Your knees will remember this battle."
 
     #Audio - [Robovac, Happy robot beeps, high-pitched]
+    play sound "cheerful_beeps.mp3"
 
     show robovac mischief
 
@@ -85,23 +87,25 @@ label task_two_bond:
         "Pretend to give up...Then attack!":
 
             "You freeze and then cross your arms, sighing dramatically. The robovac slows down, unsure..."
+
             # Audio - [Robovac, Excited robot beeps, high-pitched, like happy but rapid-fire]
+            play sound "rapidfire_beeps.mp3"
+
             "Narration - Then, you make your move! You dive as it beeps and darts forward again, leaving you in its dust."
 
 
-    # Visual - RobovacSprite_Happy_1_Budder.png 
+    
     show robovac happy
     "After several exhausting rounds of silliness, the robovac finally slows down, its battery light blinking red. It rolls to a stop, tilting forward to offer you your phone back."
 
     show robovac battery
-    #Visual - [RobovacSprite_BatteryLow_1_Budder.png] 
+    
 
     "With a gentle nudge, it lets out one last tired but affectionate beep. Its motor hums, purring gently."
 
     $ bond += 1
     jump task_two_end
     
-
 
 label task_two_threaten:
     pov "Enough is enough, if you wanna keep messing with me, fine."
@@ -115,6 +119,7 @@ label task_two_threaten:
             "You dangle the charger cord in front of the robovac, spinning it up in the air a bit like a cowboy with a lasso. Its little wheels jitter nervously as it backs up a few inches."
             
             # Audio - [Scared/anxious robot beeps, low pitched]
+            play sound "anxious_beeps.mp3"
             
             show robovac scared 
             
@@ -122,7 +127,10 @@ label task_two_threaten:
 
         "Drag the charging dock closer to you.":
             show robovac scared 
+
             #Audio - [Scared/anxious robot beeps, low pitched]
+            play sound "anxious_beeps.mp3"
+
             "You crouch down and pull the dock across the floor, keeping your eyes locked onto the robovac. The robovac creeps forward cautiously, almost pleadingly."
             pov "No, you don't! It's mine now. You take my phone; I take your charger."
 
@@ -133,6 +141,7 @@ label task_two_threaten:
     show robovac angry
 
     # Audio - [Angy robot beeps, low droning sound]
+    play sound "sulking_beeps.mp3"
 
     "Sparks of unnatural energy crackle faintly around its wheels. It seems to be glaring at you now."
 
@@ -156,11 +165,12 @@ label task_two_threaten:
             "You walk over to your drawers and rummage through them, picking up a pack of triple-A batteries. You hold up the charger and then the batteries."
             window hide dissolve
 
+
+            show pentasonic_batteries with moveinbottom
             pause 1.0
 
             window show 
 
-            # Prop_Pentasonic_Batteries_1_Aster.png
 
             "Last chance, buddy."
             "No charger and no batteries for you until I get my phone back."
@@ -173,10 +183,12 @@ label task_two_threaten:
 
     "The robovac rolls away slowly, sulking in a dark corner. Its low pitiful bweeps sound both resentful and now slightly demonic. You got your phone back, but at what cost?"
 
+    
+
+    hide pentasonic_batteries with moveoutbottom
+
     $ threaten += 1
     jump task_two_end
-
-
 
 
 label task_two_neglect:
@@ -188,7 +200,9 @@ label task_two_neglect:
     show robovac mischief
 
     # Audio - [Robovac, Excited robot beeps, high-pitched, like happy but rapid-fire]
-    
+    play sound "excited_beeps.mp3"
+
+
     "The robovac bweep-boops playfully as it tries again to get your attention."
 
 
@@ -235,6 +249,7 @@ label task_two_neglect:
     "Hey, sorry I didn't want to play."
     
     # Audio - [Sulking or disappointed robot beeps, like a sad kazoo]
+    play sound "sad_kazoo.mp3"
     
     "A single, sulking beep echoes out from the kitchen in reply."
     
@@ -245,7 +260,11 @@ label task_two_neglect:
 
 
 label task_two_end:
-
+    
+    window hide
     scene black with dissolve
+    stop music fadeout 0.5
+    
+    pause 2.0
     
     jump task_three
