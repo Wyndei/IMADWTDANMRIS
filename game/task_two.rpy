@@ -15,20 +15,21 @@ label task_two:
 
     "You pat your pockets, check the table, under the couch cushions, the kitchen counter, even in the fridge, but your phone is nowhere to be found." 
 
+
+
     pov "C'mon it has to be {i}somewhere{/i}"
 
     "And then you hear it: The sound of unholy beep-boops, beeping and booping from the other side of the apartment."       
 
-    play sound "excited_beeps.mp3"
-    
+    play sound "cheerful_beeps.mp3"
     show robovac mischief with dissolve
+    show phone_off with moveinbottom
 
     "Your robovac sits in the doorway, smugly blinking as it holds your phone atop its head. It revs in place, as if beckoning you closer."
 
-    #Audio - [Robovac, engine rev sound]
-    # play sound ".mp3"
-
     pov "...Are you serious right now?"
+
+    hide phone_off with moveoutbottom
 
     show robovac excited
 

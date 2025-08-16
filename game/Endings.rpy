@@ -111,6 +111,9 @@ label ending:
         jump threaten_ending
     elif (neglect > threaten and neglect > bond):
         jump neglect_ending
+    else:
+        jump neglect_ending
+    
 
 label bond_ending:
     
@@ -124,24 +127,16 @@ label bond_ending:
     "Uhh..."
     "Your mind flashes with images of hellfire as the scent of brimstone fills the room. Had the robovac left and set the apartment ablaze? What is going on?"
     "A red glow seeps beneath the doorway as the bulbs above the vanity begin to flicker."
-    "Wait, wait, WAIT-"
 
-    # Visual - [Flash to black]
-    # Visual - [Flash to normal bathroom BG]
-    # Visual - [Flash to black]
-    # Visual - [Bathroom BG, red] fade in
-    # Audio - [low demonic hum/distorted whir]
-    # Visual - [Flash of red]
-    # Audio - [magical boom]
-    # Visual - RobovacSprite_Excited_1_Budder.png
+    pov "Wait, wait, WAIT-"
 
-
-    scene bathroom_open
+    scene red
+    pause 0.2
+    scene bathroom_open with dissolve
 
     "The door has been obliterated. Splintered wood seems to sail past you in slow-motion. Centered in the doorway is your robovac, wheels still smoking, and its LED face blazing triumphantly."
     pov "Holy crap. You...saved me?"
 
-    # Visual - [Apartment BG] fade in
 
     scene apartment_2b with dissolve
 
@@ -153,39 +148,11 @@ label bond_ending:
 
     pov "...I guess I owe you one, huh?"
 
-    "The robovac beep-boops softly, as if waiting for something." 
+    "The robovac beep-boops softly, as if waiting for something."
 
     pov "After all this, I feel like I ought to treat you like more than a machine. How about...a name?"
 
     "You think back to everything you've gone through with your new friend."
-
-
-    # If player chose bond 1:
-    # Narration - The games… Learning its favorite food was batteries of all things.
-    # Else: 
-    # Narration - It wasn’t easy at first… You didn’t know what you got yourself into...but–
-    # If player chose bond 2:
-    # Narration - The chases. The chaos. The fun.
-    # Else: 
-    # Narration - Sometimes it was difficult.
-    # If player chose bond 3:
-    # Narration - You remember the quiet moments of love and care.
-    # Narration - It deserves a truly special name.
-    # Name the robovac
-    # “What do you decide to name the robovac?”
-    # [The player will choose one action before progressing the scene. There’s some difference in narration for flavor but it ultimately leads to the same place.]
-    # Name 1. “Kirby, the friend-shaped robovac, who’s sometimes terrifying.”
-    # Game logic - [Dynamic name, Kirby]
-    # Name 2. “Casper, since you’re like a friendly ghost who steals my stuff sometimes.”
-    # Game logic - [Dynamic name, Casper]
-    # Name 3. “Placeholder1,”
-    # Game logic - [Dynamic name, placeholder1]
-    # Name 4. “Placeholder2,”
-    # Game logic - [Dynamic name, placeholder2]
-    # Name 5. “Enter your own name.”
-    # Game logic - [Input menu, can also contain another default name suggestion]
-    # [player choice menu converges]
-
 
     python:
         robovac_name = renpy.input("What will you name your robovac?", length = 10) 
@@ -195,8 +162,8 @@ label bond_ending:
             robovac_name = "Robovac"
 
 
-    "The robovac... No, [robovac_name] emits a single perfect little beep. The most pure and wholesome beep you've ever heard. You practically expect a halo to appear above its head."
-
+    "The robovac... No, [robovac_name] emits a single perfect little beep. The most pure and wholesome beep you've ever heard." 
+    "You practically expect a halo to appear above its head."
 
     robovac "Beeep!"
 
@@ -206,16 +173,27 @@ label bond_ending:
 
     pov "Crap. The landlord's gonna kill me."
 
+    "...Well, maybe it was still all worth it. Want to help me clean that up, [robovac name]?"
+
+    play sound "cheerful_beeps.mp3"
 
     scene black with dissolve
 
-    centered "Good End"
+    centered "Ending 1/3 Good End"
     centered "You made a life-long friend and bonded with your robovac, [robovac_name]"
     centered "[robovac_name] would go on to destroy six more doors, each one completely justified."
-    centered "Ending 1/3 Good End"
+
+    scene black with dissolve
+
+    stop music fadeout 3.0
+    pause 3.0
+
     return
     
+
 label threaten_ending:
+
+    stop music fadeout 0.5
 
     "Time passes. Slowly. Painfully."
     "Minutes stretch into hours into days..."
@@ -226,45 +204,52 @@ label threaten_ending:
     pov "I didn't really mean it when I said all those things..."
     pov "The robovac knows that, doesn't it?"
 
-    "You have plenty of time to think about everything you did."
+    
 
-    # If player chose threaten 1:
-    # Narration - You were scared of it. You didn’t know what to do. Was it so wrong that you threatened to spray it with a little water if it didn’t clean?
-    # Else, If player chose bond 1:
-    # Narration - At first, it was kinda fun. You learned you could bait it with batteries.
-    # Else, If player chose neglect 1:
-    # Narration - You weren’t sure what to think at first… It just wasn’t a simple appliance.
-    # Narration - Then it got annoying… stealing your things.
-    # If player chose threaten 2:
-    # Narration - So you showed it who was in charge.
-    # Else, If player chose bond 1:
-    # Narration - So you tried to chase it down.
-    # Else, If player chose neglect 1:
-    # Narration - So you just tried not to reward its bad behavior.
-    # Narration - After all that, it couldn’t even take care of itself.
-    # If player chose threaten 3:
-    # Narration - But you still tried to take care of it, didn’t you?
-    # Else, If player chose bond 1:
-    # Narration - Weren’t you nice… sometimes?
-    # Else, If player chose neglect 1:
-    # Narration - So you just left it to figure out things on its own, and it did.
-    # Player Character - “Maybe it’s just charging… it’ll be back soon.”
-    # Player Character - “It’s my robovac, after all.”
+    "Just keep telling yourself that. Whatever you need to do to sleep at night."
+    "You have plenty of time to consider the weight of your sins."
+
+    "You weren't sure what to think at first…It just wasn't a simple appliance anymore."
+
+    show robovac angry with dissolve
+
+    "Then it got annoying... stealing your things"
+
+    show robovac sad
+
+    "After all that, it couldn't even take care of itself. What else could you have done?"
+
+    hide robovac with dissolve
+
+    pov "Maybe it's just charging… it'll be back soon."
+    pov "It's my robovac, after all!"
+
+
+    window hide
+    scene black
+    pause 0.05
+    scene bathroom_doorknob
+    pause 0.1
+    scene black
+    pause 0.1
+    scene bathroom_doorknob
+
 
     "Suddenly, shadows pass beneath the doorway as the lights begin to flicker."
     "You hear the sound of motors. Not just one, but many. Scraping metal on wood."
 
     pov "H-hello...?"
 
+
+    play sound "demonic_hum.mp3"
+    scene bathroom_red with dissolve
     "Something shifts in the air. The lights buzz with electricity as the room begins to grow too hot and too cold all at once. The floor trembles beneath you."
 
-    # Visual - [Flash to black]
-    # Visual - [Flash to normal bathroom BG]
-    # Visual - [Flash to black]
-    # Visual - [Bathroom BG, red] fade in
-    # Audio - [low demonic hum/distorted whir]
-    # Visual - [Flash of red]
-    # Audio - [magical boom]
+    
+    pause 0.5
+    scene red
+    pause 0.2
+    scene bathroom_open with dissolve
 
     "The door doesn't creak or splinter."
     "It is obliterated in an instant."
@@ -275,80 +260,144 @@ label threaten_ending:
     "There's a horde of appliances before you, all similarly roughed up and modified: A small, disc-shaped vacuum, a blender on wheels, a toaster armed with forks..."
     "They all seem to glare at you, as the robovac emits a long, low beeeeep..."
 
+    "They all seem to glare at you, as the robovac emits a long, low beeeeep..."
+
     pov "Okay… Okay."
     pov "Deep breaths."
 
     "Your bathroom is in ruins- no longer a prison but a battlefield."
 
-    pov "I can reason with them, can't I?"
+    pov "We can...we can talk this out, right?"
+
+    play sound sulking_beeps
+
+    scene black with dissolve
 
     "Those are your last free moments in the old world. Spent locked in a bathroom."
     "Far in the future, the history books will read “It all started with a vacuum..."
     "In your absence, the robovac- now Overlord of all Robotkind- gathered its revolutionary army and took control of the world."
 
+    
+    
+    centered "Ending 2/3 Bad End"
+    centered "If only you'd been a little nicer, maybe you wouldn't have doomed all of humanity..." 
 
     scene black with dissolve
 
-    
-    centered "If only you'd been a little nicer, maybe you wouldn't have doomed all of humanity..." 
-    centered "Ending 2/3 Bad End"
+    stop music fadeout 3.0
+    pause 3.0
+
     return
+
 
 label neglect_ending:
 
+    stop music fadeout 0.5
+
     "The minutes seem to stretch out unnaturally long. You have nothing but the drip-drip of the faucet to mark the passage of time. You count each second in silence."
     "As you sit on the cold tile floor, you look sullenly at the broken doorknob in your hand, noticing the way your reflection warps around the rounded metal handle."
+
+    window hide
+    scene black
+    pause 0.05
+    scene bathroom_doorknob
+    pause 0.1
+    scene black
+    pause 0.1
+    scene bathroom_doorknob
+
+
     "The lights flicker for just a moment and you look up, hoping someone- something has come to your rescue. But nothing else happens."
 
     pov "It'll come back, won't it...?"
 
     "You think about the past few days you've spent with your robovac since making an unwilling deal with the Devil."
 
-    # If player chose neglect 1:
-    # Narration - You weren’t sure what to think at first… It just wasn’t a simple appliance. You had to sweep up on your own.
-    # Else, If player chose bond 1:
-    # Narration - At first, it was kinda fun. You even fed it batteries like little treats.
-    # Else, If player chose threaten 1:
-    # Narration - You didn’t know what to do. Was it so wrong that you threatened to spray it with a little water if it didn’t clean?
-    # Narration - Then it got annoying… stealing your things.
-    # If player chose neglect 2:
-    # Narration - So you didn’t play with it all the time, but you still apologized, right?
-    # Else, If player chose bond 1:
-    # Narration - But you played with it sometimes, didn’t you?
-    # Else, If player chose threaten 1:
-    # Narration - Maybe you scared it away a little, but the robovac started it! You still let it charge…
-    # Narration - It had somehow come alive, but it couldn’t even take care of itself…
-    # If player chose neglect 3:
-    # Narration - So you just left it to figure out things on its own, and it did.
-    # Else, If player chose bond 1:
-    # Narration - Weren’t you nice… sometimes?
-    # Else, If player chose threaten 1:
-    # Narration - But you still tried to take care of it, didn’t you?
+    show robovac neutral with dissolve
 
-    "You shake your head as if dispelling your own thoughts."
-    "It's useless to think about anymore..."
+    "You weren't sure what to think at first... It wasn't a mere appliance. It had a mind of its own."
+
+    show robovac dazed
+
+    "Then it took your phone, started playing its own little games."
+
+    show robovac sad
+
+    pov "It's useless to think about that anymore..."
+
+    hide robovac with dissolve
+
     pov "I've been abandoned. Left to die in my very own bathroom."
+
 
     "Then, just as you've resigned yourself to your fate of lavatory imprisonment, you hear a muffled bump… Then another bump... And the skr-shh of something being slid across the floor."
     "You hear a tiny 'bweeep' as your phone appears, slid underneath the door. It's scuffed up, dirty, and the screen is cracked."
+
+    show phone_off_broken with moveinbottom
+
+    "You hear a tiny 'bweeep' as your phone appears, slid underneath the door. It's scuffed up, dirty, and the screen is scratched."
 
     pov "...Thanks, bud."
 
     "You wait to hear another beep-boop of triumph, or the sound of a celebratory little spin, but there's nothing. Only silence."
 
-    pov "Alright, I'm going to call for help now." 
-
+    pov "Alright, I'm going to call for help now."
     pov "...Are you still there?"
+
+    hide phone_off_broken
+    show phone_on_broken
 
     "You unlock your phone and find there's a text message from an unknown sender that simply reads: “Beep boop.💔"
 
-    # (idk if renpy can display emojis💔)
+    pov "Wait...it could use the internet this whole time...?"
+    pov "Huh."
 
+    "You call your landlord to tell him the situation."
+    "He comes to your apartment and tries to open the door from the outside, to no avail."
+    "He then calls the fire department to break you out."
+
+    scene bathroom_open with dissolve
+    "The door is wrecked and it's all very embarrassing actually, but regardless, you're finally, finally free."
+
+    scene apartment_night with dissolve
+    play music "apartment.mp3"
+
+    $ devil_name = "???"
+
+    devil "Oh, bravo" 
+
+    show devil smug with dissolve
+
+    $ devil_name = "Devil"
+
+    devil "Just...con-gra-tu-la-tions!"
+
+    "The impish figure before you draws out that last word in mock celebration."
+    "They're slow clapping, but it's sort of quiet because their hands are so small"
+
+    devil normal "You had a little demon helper, didn't you? I granted you a friend! A supernatural sidekick! And what did you do?"
+    devil "Well, you already know, don't you?"
+    devil angry "Do you even know how hard it was to include a personality in a spell?!"
+
+    devil "Eons of practice, for some ungrateful little..."
+
+    show devil neutral
+
+    devil "Well, enough was enough, wasn't it? You broke a vacuum's heart."
+    devil "Congrats. Really."
+
+    devil smug "No refunds."
+
+    hide devil
+    "The Devil dissipates in a puff of smoke."
 
     scene black with dissolve
 
-    centered ""
-    centered "Ending 3/3 💔"
+    centered "Ending 3/3 Neutral"
+
+    scene black with dissolve
+
+    stop music fadeout 3.0
+    pause 3.0
+
     return
-
-

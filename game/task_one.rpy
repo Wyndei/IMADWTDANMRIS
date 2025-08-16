@@ -94,6 +94,8 @@ label task_one_bond:
 
     "The robovac zooms around the room in a blur of enthusiasm, sweeping up everything in sight to claim its prize."
 
+    scene apartment_clean with dissolve
+
     pov "Ha, I'm a genius!"
 
     play sound "excited_beeps.mp3"
@@ -133,6 +135,8 @@ label task_one_threaten:
     "It relents."
     "With a reluctant mechanical whir, it rolls towards the nearest dust pile, sweeping up slowly, but its LED face display never looks away from you for too long."
     
+    scene apartment_clean with dissolve
+
     pov "That's what I thought."
 
 
@@ -159,6 +163,8 @@ label task_one_neglect:
 
     pov "{i}Ugh... This is humiliating...{/i}"
 
+    scene apartment_clean with dissolve
+    
     "At last, the floor's mostly clean"
     "so much for the robot. Still, it rolls back to its charger and parks itself quietly, and its LED display turns dark, blank, and unreadable."
     "Somehow, it feels like you've missed an opportunity, though for what you can't say."
